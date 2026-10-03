@@ -43,8 +43,8 @@ function processHands(results,now){
  }
  for(const v of visuals)if(!live.has(v)){v.present=false;v.charge=0;}
  const bouquet=bouquetGate.update(observed,now);
- if(bouquet.progress>0){currentHint=bouquet.fire?'Satu buket, hanya untukmu.':'Dekatkan dua telapak, tahan sebentar';progress=bouquet.progress;}
- if(bouquet.fire){const a=project(observed[0].palm),b=project(observed[1].palm);garden.bouquet(clamp((a.x+b.x)/2,garden.w*.25,garden.w*.75),clamp((a.y+b.y)/2,garden.h*.3,garden.h*.7));chime(true);lastGift=now;}
+ if(bouquet.progress>0){currentHint=bouquetGate.fired?'Buketmu mekar. Pisahkan tangan untuk mengulang.':'Dekatkan dua telapak, tahan sebentar';progress=bouquet.progress;}
+ if(bouquet.fire){const a=project(observed[0].palm),b=project(observed[1].palm);garden.bouquet(clamp((a.x+b.x)/2,garden.w*.25,garden.w*.75),clamp((a.y+b.y)/2,garden.h*.3,garden.h*.5));chime(true);lastGift=now;}
  if(observed.length){lastHand=now;status(observed.length===2?'Dua tangan terhubung':'Mengikuti tanganmu');hint(currentHint,progress);}
  else if(now-lastHand>650){status('Mencari tangan');hint('Tampilkan seluruh tangan di tempat terang');}
  if(now-lastGift<2400)hint('Untuk seseorang yang membuat duniamu mekar',1);
